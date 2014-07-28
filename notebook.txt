@@ -1,0 +1,15 @@
+クライアントマシン（OSX 10.9 → mavericks）へRのインストールやコードの使い方は <a href="http://www.amazon.co.jp/gp/product/4797376333/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4797376333&linkCode=as2&tag=wwwgimmixorg-22">ビジネス活用事例で学ぶ データサイエンス入門</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=wwwgimmixorg-22&l=as2&o=9&a=4797376333" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> を参考にする。
+
+http://www.r-project.org
+
+http://cran.ism.ac.jp/bin/macosx/
+から
+R-3.1.1-mavericks.pkgをダウンロード→インストール
+
+実行方法
+アプリケーションからR.appを実行
+コマンドラインからRを実行
+
+demo()でデモが見られますって言われるけどよくわからない。
+
+
