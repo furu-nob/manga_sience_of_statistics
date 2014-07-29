@@ -42,3 +42,207 @@ attached base packages:
 loaded via a namespace (and not attached):
 [1] tools_3.1.1
 
+パッケージのインストール
+helpを見る
+?install.packages()
+
+> getOption("repos")
+    CRAN 
+    "@CRAN@" 
+どこから取得するか確認
+
+パッケージのリスト
+> available.packages()
+ --- このセッションで使うために、CRAN のミラーサイトを選んでください --- 
+package                      Version          Priority
+A3                         "A3"                         "0.9.2"          NA      
+abc                        "abc"                        "2.0"            NA      
+abcdeFBA                   "abcdeFBA"                   "0.4"            NA      
+ABCExtremes                "ABCExtremes"                "1.0"            NA      
+ABCoptim                   "ABCoptim"                   "0.13.11"        NA      
+ABCp2                      "ABCp2"                      "1.1"            NA      
+abctools                   "abctools"                   "0.3-2"          NA      
+abd                        "abd"                        "0.2-6"          NA      
+…
+
+grepしたい（出来たけどめんどくさい）
+> available <- available.packages() # 一覧を代入
+> head(available,n=3) # 代入できてるか確認（3行）
+         Package    Version Priority Depends                                     Imports LinkingTo Suggests              Enhances License License_is_FOSS License_restricts_use OS_type
+A3       "A3"       "0.9.2" NA       "R (>= 2.15.0), xtable, pbapply"            NA      NA        "randomForest, e1071" NA       NA      NA              NA                    NA     
+abc      "abc"      "2.0"   NA       "R (>= 2.10), nnet, quantreg, MASS, locfit" NA      NA        NA                    NA       NA      NA              NA                    NA     
+abcdeFBA "abcdeFBA" "0.4"   NA       "Rglpk,rgl,corrplot,lattice,R (>= 2.10)"    NA      NA        "LIM,sybil"           NA       NA      NA              NA                    NA     
+Archs MD5sum NeedsCompilation File Repository                                              
+A3       NA    NA     NA               NA   "http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1"
+abc      NA    NA     NA               NA   "http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1"
+abcdeFBA NA    NA     NA               NA   "http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1"
+
+> grep('ggplot',available[,1]) # 1列目にggplotが入っている行を表示
+[1] 1776 3924
+
+> available[1776,] # 1776行目を表示
+Package                                                                                       Version 
+"ggplot2"                                                                                       "1.0.0" 
+Priority                                                                                       Depends 
+NA                                                                 "R (>= 2.14), stats, methods" 
+Imports                                                                                     LinkingTo 
+plyr (>= 1.7.1), digest, grid, gtable (>= 0.1.1), reshape2,\nscales (>= 0.2.3), proto, MASS"                                                                                            NA 
+Suggests                                                                                      Enhances 
+"quantreg, Hmisc, mapproj, maps, hexbin, maptools, multcomp,\nnlme, testthat, knitr, mgcv"                                                                                            NA 
+License                                                                               License_is_FOSS 
+NA                                                                                            NA 
+License_restricts_use                                                                                       OS_type 
+NA                                                                                            NA 
+Archs                                                                                        MD5sum 
+NA                                                                                            NA 
+NeedsCompilation                                                                                          File 
+NA                                                                                            NA 
+Repository 
+"http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1" 
+
+> available[3924,] # 3924行目を表示
+Package 
+"RcmdrPlugin.KMggplot2" 
+Version 
+"0.2-0" 
+Priority 
+NA 
+Depends 
+"R (>= 2.15.2), stats, methods, grid, ggplot2 (>= 0.9.3)" 
+Imports 
+"ggthemes (>= 1.3.1), gtable (>= 0.1.1), plyr (>= 1.8), Rcmdr\n(>= 1.9-3), RColorBrewer (>= 1.0-5), scales (>= 0.2.3),\nsurvival (>= 2.37-2), tcltk2 (>= 1.2-3)" 
+LinkingTo 
+NA 
+Suggests 
+NA 
+Enhances 
+NA 
+License 
+NA 
+License_is_FOSS 
+NA 
+License_restricts_use 
+NA 
+OS_type 
+NA 
+Archs 
+NA 
+MD5sum 
+NA 
+NeedsCompilation 
+NA 
+File 
+NA 
+Repository 
+"http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1" 
+
+> grep('^ggplot',available[,1]) # こんな感じでもok
+[1] 1776
+> grep('^ggplot',available) # 全部からだとこうなる。
+ [1]  1776 17122 17426 17923 18186 18896 19097 19144 19384 19475 19848 20003 20075 20692 21085 21522 21594 21634 21685 21686 21970 22304 22508 22761 22970 23066 23379 23641 23654 23753
+[31] 23912 24616 24751 24849 25185 25407 25516 25526 25971 26117 26371 26522 26616 26931 27044 27048 27124 32821 33471 33536 33730 33852 33874 34071 34296 34419 34511 34591 34613 34784
+[61] 35142 35387 35586 35810 36195 36253 36333 36418 36483 36693 36869 37171 37175 37229 37444 37708 37928 37985 37989 38196 38224
+
+でgunuplot2をインストール
+> install.packages("ggplot2")
+also installing the dependencies ‘colorspace’, ‘Rcpp’, ‘stringr’, ‘RColorBrewer’, ‘dichromat’, ‘munsell’, ‘labeling’, ‘plyr’, ‘digest’, ‘gtable’, ‘reshape2’, ‘scales’, ‘proto’
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/colorspace_1.2-4.tgz' を試しています 
+Content type 'application/x-gzip' length 391920 bytes (382 Kb)
+ 開かれた URL 
+==================================================
+downloaded 382 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/Rcpp_0.11.2.tgz' を試しています 
+Content type 'application/x-gzip' length 2718706 bytes (2.6 Mb)
+ 開かれた URL 
+==================================================
+downloaded 2.6 Mb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/stringr_0.6.2.tgz' を試しています 
+Content type 'application/x-gzip' length 72939 bytes (71 Kb)
+ 開かれた URL 
+==================================================
+downloaded 71 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/RColorBrewer_1.0-5.tgz' を試しています 
+Content type 'application/x-gzip' length 22881 bytes (22 Kb)
+ 開かれた URL 
+==================================================
+downloaded 22 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/dichromat_2.0-0.tgz' を試しています 
+Content type 'application/x-gzip' length 145388 bytes (141 Kb)
+ 開かれた URL 
+==================================================
+downloaded 141 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/munsell_0.4.2.tgz' を試しています 
+Content type 'application/x-gzip' length 126477 bytes (123 Kb)
+ 開かれた URL 
+==================================================
+downloaded 123 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/labeling_0.2.tgz' を試しています 
+Content type 'application/x-gzip' length 39320 bytes (38 Kb)
+ 開かれた URL 
+==================================================
+downloaded 38 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/plyr_1.8.1.tgz' を試しています 
+Content type 'application/x-gzip' length 863410 bytes (843 Kb)
+ 開かれた URL 
+==================================================
+downloaded 843 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/digest_0.6.4.tgz' を試しています 
+Content type 'application/x-gzip' length 110500 bytes (107 Kb)
+ 開かれた URL 
+==================================================
+downloaded 107 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/gtable_0.1.2.tgz' を試しています 
+Content type 'application/x-gzip' length 62658 bytes (61 Kb)
+ 開かれた URL 
+==================================================
+downloaded 61 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/reshape2_1.4.tgz' を試しています 
+Content type 'application/x-gzip' length 200234 bytes (195 Kb)
+ 開かれた URL 
+==================================================
+downloaded 195 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/scales_0.2.4.tgz' を試しています 
+Content type 'application/x-gzip' length 154655 bytes (151 Kb)
+ 開かれた URL 
+==================================================
+downloaded 151 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/proto_0.3-10.tgz' を試しています 
+Content type 'application/x-gzip' length 455037 bytes (444 Kb)
+ 開かれた URL 
+==================================================
+downloaded 444 Kb
+
+ URL 'http://cran.ism.ac.jp/bin/macosx/mavericks/contrib/3.1/ggplot2_1.0.0.tgz' を試しています 
+Content type 'application/x-gzip' length 2661408 bytes (2.5 Mb)
+ 開かれた URL 
+==================================================
+downloaded 2.5 Mb
+
+
+ ダウンロードされたパッケージは、以下にあります 
+  /var/folders/p9/w449zr_j34j71zlcyqht3b_h0000gn/T//RtmpExej3O/downloaded_packages 
+
+> installed.packages()[,1]  # 確認
+          base           boot          class        cluster      codetools     colorspace       compiler       datasets      dichromat         digest        foreign        ggplot2 
+        "base"         "boot"        "class"      "cluster"    "codetools"   "colorspace"     "compiler"     "datasets"    "dichromat"       "digest"      "foreign"      "ggplot2" 
+      graphics      grDevices           grid         gtable     KernSmooth       labeling        lattice           MASS         Matrix        methods           mgcv        munsell 
+    "graphics"    "grDevices"         "grid"       "gtable"   "KernSmooth"     "labeling"      "lattice"         "MASS"       "Matrix"      "methods"         "mgcv"      "munsell" 
+          nlme           nnet       parallel           plyr          proto   RColorBrewer           Rcpp       reshape2          rpart         scales        spatial        splines 
+        "nlme"         "nnet"     "parallel"         "plyr"        "proto" "RColorBrewer"         "Rcpp"     "reshape2"        "rpart"       "scales"      "spatial"      "splines" 
+         stats         stats4        stringr       survival          tcltk          tools          utils 
+       "stats"       "stats4"      "stringr"     "survival"        "tcltk"        "tools"        "utils" 
+
+
