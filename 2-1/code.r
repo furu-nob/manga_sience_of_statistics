@@ -1,7 +1,7 @@
 setwd("/Users/furuyama/github/manga_sience_of_statistics/2-1/")
 
 # ramen.csv 作成
-# \" はつけない
+# \"（ダブルクォート） はつけない
 
 > umai_ramen <- read.csv("ramen.csv", header=T, stringsAsFactors=F)
 > head(umai_ramen)
@@ -37,6 +37,9 @@ Compactly display the internal structure of an R object, a diagnostic function a
  $ Shop : int  1 2 3 4 5 6 7 8 9 10 ...
  $ Price: int  700 850 600 650 980 750 500 890 880 700 ...
 
+# ggplot2を読み込み
+> library(ggplot2)
+
 # ヒストグラムを書く
 > ggplot(umai_ramen,aes(x=Price)) + geom_histogram()
 stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
@@ -50,4 +53,5 @@ stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 Saving 7 x 6.05 in image
 
 
+ggplot のaesの意味 → aesthetics（エステティクス、美的要素）の略
 
