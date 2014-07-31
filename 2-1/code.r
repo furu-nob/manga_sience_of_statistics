@@ -27,6 +27,84 @@ setwd("/Users/furuyama/github/manga_sience_of_statistics/2-1/")
 
 # 度数分布表
 # 相対度数
+# http://aoki2.si.gunma-u.ac.jp/R/dp/junbi.html
+# 1列目をfactor（要素）に
+> umai_ramen[,1] <- factor(umai_ramen[,1])
+> str(umai_ramen)
+'data.frame': 50 obs. of  2 variables:
+ $ Shop : Factor w/ 50 levels "1","2","3","4",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Price: int  700 850 600 650 980 750 500 890 880 700 ...
+
+> table(umai_ramen)
+    Price
+Shop 500 550 580 590 600 650 670 680 700 720 750 777 780 790 800 850 880 890 900 930 980
+  1    0   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0
+  2    0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1   0   0   0   0   0
+  3    0   0   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+  4    0   0   0   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+  5    0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+…
+
+# xxxx
+# 500-600
+k500_600 <- subset(umai_ramen,Price >= 500 & Price < 600,c(Price))
+k600_700 <- subset(umai_ramen,Price >= 600 & Price < 700,c(Price))
+k700_800 <- subset(umai_ramen,Price >= 700 & Price < 800,c(Price))
+k800_900 <- subset(umai_ramen,Price >= 800 & Price < 900,c(Price))
+k900_1000 <- subset(umai_ramen,Price >= 900 & Price < 1000,c(Price))
+# xxxx
+
+# http://www13.atwiki.jp/rmemo/pages/18.html
+# グラフは描かずに度数分布表だけを作る
+> hist(umai_ramen[,2],plot=F)
+$breaks
+ [1]  500  550  600  650  700  750  800  850  900  950 1000
+
+$counts
+ [1]  2  5  5 10  6 10  3  7  1  1
+
+$density
+ [1] 0.0008 0.0020 0.0020 0.0040 0.0024 0.0040 0.0012 0.0028 0.0004 0.0004
+
+$mids
+ [1] 525 575 625 675 725 775 825 875 925 975
+
+$xname
+[1] "umai_ramen[, 2]"
+
+$equidist
+[1] TRUE
+
+attr(,"class")
+[1] "histogram"
+
+
+
+# http://www2.hak.hokkyodai.ac.jp/fukuda/lecture/SocialLinguistics/Rshagen/02histogramR.html
+# クラスの区間を通常は「～以上～未満」として集計しますので、right=FALSEというオプションを忘れずに指定してください。
+> hist(umai_ramen[,2],breaks = c(500,600,700,800,900,1000),plot=F,right=FALSE)
+$breaks
+[1]  500  600  700  800  900 1000
+
+$counts
+[1]  4 13 18 12  3
+
+$density
+[1] 0.0008 0.0026 0.0036 0.0024 0.0006
+
+$mids
+[1] 550 650 750 850 950
+
+$xname
+[1] "umai_ramen[, 2]"
+
+$equidist
+[1] TRUE
+
+attr(,"class")
+[1] "histogram"
+
+# http://bio-info.biz/tips/r_histogram.html
 
 > ?str
 Description
