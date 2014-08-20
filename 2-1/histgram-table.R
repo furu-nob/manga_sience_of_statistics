@@ -1,3 +1,5 @@
+# (1)縦軸度数のグラフ
+# (2)縦軸相対度数のグラフ
 # setwd("/Users/furuyama/github/manga_sience_of_statistics/2-1/")
 # objects()
 # source("histgram-table.R")
@@ -16,7 +18,9 @@ output.table[7,] <- c("計",NA,sum(umai.ramen.histhistgram$counts),sprintf("%.2f
 output.table
 
 # data.frame作成
-df <- data.frame(mids = umai.ramen.histhistgram$mid, counts = umai.ramen.histhistgram$counts)
+#(1) df <- data.frame(mids = umai.ramen.histhistgram$mid, counts = umai.ramen.histhistgram$counts)
+#(2)
+df <- data.frame(mids = umai.ramen.histhistgram$mid, density = umai.ramen.histhistgram$density * 100)
 
 # グラフ書く
 library(ggplot2)
@@ -24,14 +28,26 @@ g <- ggplot(
   df,
   aes (
     x = mids,
-    y = counts,
-    fill = counts
+    #(1)y = counts,
+    #(2)
+    y = density,
+    #(1)fill = counts,
+    #(2)
+    fill = density,
+    #(1)label = counts, vjust = -0.5
+    #(2)
+    label = density, vjust = -0.5
   )
 )
 g <- g + geom_bar(
   stat = "identity",
 )
 g <- g + xlab("mids")
-g <- g + ylab("Counts")
+#(1)g <- g + ylab("Counts")
+#(2)
+g <- g + ylab("Density")
 g <- g + ggtitle("manga_sience_of_statistics 2-1")
+g <- g + geom_text()
 plot(g)
+#(1)ggsave(file="graph_hist_counts.png")
+#(2)ggsave(file="graph_hist_density.png")
