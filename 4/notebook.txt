@@ -1,0 +1,98 @@
+4.基準値と偏差値
+1.基準化と基準値
+setwd("/Users/furuyama/github/manga_sience_of_statistics/4/")
+
+英語と古典のテストの結果（カンマ区切り）
+english_koten.test_result.csv
+
+english_koten.test_result <- read.csv("english_koten.test_result.csv", header=T, stringsAsFactors=F)
+
+> test_result
+   Name English Koten
+1   Rui      90    71
+2  Yumi      81    90
+3     A      73    79
+4     B      97    70
+5     C      85    67
+6     D      60    66
+7     E      74    60
+8     F      64    83
+9     G      72    57
+10    H      67    85
+11    I      87    93
+12    J      78    89
+13    K      85    78
+14    L      96    74
+15    M      77    65
+16    N     100    78
+17    O      92    53
+18    P      86    80
+
+
+
+> summary(test_result)
+     Name              English           Koten      
+ Length:18          Min.   : 60.00   Min.   :53.00  
+ Class :character   1st Qu.: 73.25   1st Qu.:66.25  
+ Mode  :character   Median : 83.00   Median :76.00  
+                    Mean   : 81.33   Mean   :74.33  
+                    3rd Qu.: 89.25   3rd Qu.:82.25  
+                    Max.   :100.00   Max.   :93.00  
+
+
+平均点
+英語：81.33点
+古典：74.33点
+
+平均点からの離れ具合
+ルイちゃんの英語90点> 90 - mean(test_result[,2]) # <- 英語の平均値
+[1] 8.666667
+ユミちゃんの古典90点> 90 - mean(test_result[,3]) # <- 古典の平均値
+> 90 - mean(test_result[,3])
+[1] 15.66667
+
+
+日本史と生物のテストの結果（カンマ区切り）
+nihonshi-seibutsu.test_result.csv 
+
+> nihonshi_seibutsu.test_result <- read.csv("nihonshi_seibutsu.test_result.csv", header=T, stringsAsFactors=F)
+> nihonshi_seibutsu.test_result
+   Name Nihonshi Seibitsu
+   1   Rui       73       59
+   2  Yumi       61       73
+   3     A       14       47
+   4     B       41       38
+   5     C       49       63
+   6     D       87       56
+   7     E       69       15
+   8     F       65       53
+   9     G       36       80
+   10    H        7       50
+   11    I       53       41
+   12    J      100       62
+   13    K       57       44
+   14    L       45       26
+   15    M       56       91
+   16    N       34       35
+   17    O       37       53
+   18    P       70       68
+
+> summary(nihonshi_seibutsu.test_result)
+     Name              Nihonshi        Seibitsu    
+ Length:18          Min.   :  7.0   Min.   :15.00  
+ Class :character   1st Qu.: 38.0   1st Qu.:41.75  
+ Mode  :character   Median : 54.5   Median :53.00  
+                    Mean   : 53.0   Mean   :53.00  
+                    3rd Qu.: 68.0   3rd Qu.:62.75  
+                    Max.   :100.0   Max.   :91.00  
+平均（Mean）は同じ
+標準偏差を求める
+
+このマンガは標本分散なのでめんどくさい。。
+日本史
+> sqrt(var(nihonshi_seibutsu.test_result[,2]) * (length(nihonshi_seibutsu.test_result[,2])-1)/length(nihonshi_seibutsu.test_result[,2]))
+[1] 22.74252
+生物
+> sqrt(var(nihonshi_seibutsu.test_result[,3]) * (length(nihonshi_seibutsu.test_result[,3])-1)/length(nihonshi_seibutsu.test_result[,3]))
+[1] 18.28175
+
